@@ -1,0 +1,263 @@
+/* VesselTracker - Canada Edition 🇨🇦 */
+
+.header {
+    background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid #ffffff;
+}
+
+.header h1 {
+    font-weight: 700;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+}
+
+.metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #d84b20;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d84b20;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.vessel-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #d84b20;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.vessel-card:hover {
+    background: #f0f1f5;
+    transform: translateX(5px);
+}
+
+.info-box {
+    background: #fef9e7;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    border-left: 4px solid #e67e22;
+}
+
+/* Canada Badge */
+.canada-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(216, 75, 32, 0.4);
+}
+
+.stButton > button:active {
+    transform: translateY(0px);
+}
+
+.stButton > button[data-testid="baseButton-primary"] {
+    background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+}
+
+/* Remove button styling */
+.stButton > button[kind="secondary"] {
+    background: #e74c3c;
+}
+
+.stButton > button[kind="secondary"]:hover {
+    background: #c0392b;
+}
+
+/* Sidebar Styling */
+.css-1d391kg {
+    background: linear-gradient(180deg, #fdf2e9 0%, #fef9e7 100%);
+}
+
+/* Form Styling */
+.stForm {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #e8e8e8;
+}
+
+/* Canada Leaf Icon Animation */
+@keyframes leafPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.canada-leaf {
+    animation: leafPulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .metric-card {
+        background: #2d2d2d;
+    }
+    .metric-label {
+        color: #aaa;
+    }
+    .vessel-card {
+        background: #2d2d2d;
+    }
+    .vessel-card:hover {
+        background: #3d3d3d;
+    }
+    .info-box {
+        background: #2d3d2d;
+    }
+    .stForm {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+    .css-1d391kg {
+        background: #1d1d1d;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    .metric-card {
+        padding: 1rem;
+    }
+    .metric-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d84b20;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e67e22;
+}
+
+/* Alert Styling */
+.stAlert {
+    border-radius: 8px;
+    border-left-width: 4px;
+}
+
+/* Metric Card Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.metric-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.metric-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.metric-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.metric-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Form input focus */
+.stTextInput > div > div > input:focus {
+    border-color: #d84b20 !important;
+    box-shadow: 0 0 0 2px rgba(216, 75, 32, 0.2) !important;
+}
+
+.stNumberInput > div > div > input:focus {
+    border-color: #d84b20 !important;
+    box-shadow: 0 0 0 2px rgba(216, 75, 32, 0.2) !important;
+}
+
+.stSelectbox > div > div > select:focus {
+    border-color: #d84b20 !important;
+}
+
+/* Dataframe styling */
+.dataframe {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dataframe thead {
+    background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+    color: white;
+}
+
+.dataframe thead th {
+    color: white !important;
+}

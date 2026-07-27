@@ -1,0 +1,17 @@
+{
+  "app": {
+    "title": "Weather Dashboard",
+    "icon": "🌤️",
+    "description": "Real-time weather and 5-day forecast for any city",
+    "version": "1.0"
+  },
+  "api": {
+    "openweather_key": "00644dab7dd1097263bb6d84cb9dd1fd",
+    "weatherapi_key": ""
+  },
+  "units": {
+    "temperature": "metric",
+    "speed": "km/h"
+  },
+  "default_city": "Toronto"
+}
