@@ -16,19 +16,18 @@ import base64
 # Page Configuration
 # -----------------------------
 st.set_page_config(
-    page_title="🍁 Premium Weather Dashboard",
-    page_icon="🌤️",
+    page_title="🇲🇲 Myanmar Weather Dashboard",
+    page_icon="☀️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # -----------------------------
-# Premium CSS
+# Premium CSS - Myanmar Edition
 # -----------------------------
 def load_css():
     css = """
     <style>
-        /* Import Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         * {
@@ -36,19 +35,19 @@ def load_css():
         }
         
         .main-header {
-            background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 30%, #2196F3 70%, #00BCD4 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 30%, #F5A623 70%, #FFD700 100%);
             padding: 2.5rem 3rem;
             border-radius: 24px;
             color: white;
             margin-bottom: 2rem;
-            box-shadow: 0 12px 48px rgba(33, 150, 243, 0.25);
+            box-shadow: 0 12px 48px rgba(245, 166, 35, 0.25);
             position: relative;
             overflow: hidden;
-            border-bottom: 4px solid #d84b20;
+            border-bottom: 4px solid #4CAF50;
         }
         
         .main-header::before {
-            content: '🍁';
+            content: '🇲🇲';
             position: absolute;
             right: 3rem;
             top: 50%;
@@ -58,7 +57,7 @@ def load_css():
         }
         
         .main-header::after {
-            content: '🌤️';
+            content: '☀️';
             position: absolute;
             right: 9rem;
             top: 15%;
@@ -71,7 +70,7 @@ def load_css():
             margin: 0;
             font-size: 2.8rem;
             letter-spacing: -1px;
-            background: linear-gradient(135deg, #ffffff, #90caf9);
+            background: linear-gradient(135deg, #ffffff, #FFE082);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -81,7 +80,7 @@ def load_css():
             margin: 0.5rem 0 0 0;
             opacity: 0.9;
             font-size: 1.1rem;
-            color: #e3f2fd;
+            color: #FFE082;
         }
         
         .badge-group {
@@ -102,8 +101,9 @@ def load_css():
             color: white;
         }
         
-        .badge-canada {
-            background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+        .badge-myanmar {
+            background: linear-gradient(135deg, #F5A623 0%, #FFD700 100%);
+            color: #1a237e;
         }
         
         .badge-live {
@@ -112,7 +112,7 @@ def load_css():
         }
         
         .badge-api {
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
         }
         
         .badge-premium {
@@ -146,8 +146,8 @@ def load_css():
         
         .weather-card:hover {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 16px 48px rgba(33, 150, 243, 0.15);
-            border-color: rgba(33, 150, 243, 0.2);
+            box-shadow: 0 16px 48px rgba(245, 166, 35, 0.15);
+            border-color: rgba(245, 166, 35, 0.2);
         }
         
         .weather-card .icon {
@@ -158,7 +158,7 @@ def load_css():
         .weather-card .value {
             font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #0d1b2a, #2196F3);
+            background: linear-gradient(135deg, #0d1b2a, #F5A623);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -167,7 +167,7 @@ def load_css():
         .weather-card .value-large {
             font-size: 4.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #0d1b2a, #2196F3);
+            background: linear-gradient(135deg, #0d1b2a, #F5A623);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -196,8 +196,8 @@ def load_css():
         
         .forecast-card:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 40px rgba(33, 150, 243, 0.12);
-            border-color: rgba(33, 150, 243, 0.2);
+            box-shadow: 0 12px 40px rgba(245, 166, 35, 0.12);
+            border-color: rgba(245, 166, 35, 0.2);
         }
         
         .forecast-card .day {
@@ -214,7 +214,7 @@ def load_css():
         .forecast-card .temp-high {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #2196F3;
+            color: #F5A623;
         }
         
         .forecast-card .temp-low {
@@ -245,20 +245,20 @@ def load_css():
         }
         
         .city-btn:hover {
-            border-color: #d84b20;
+            border-color: #F5A623;
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(216, 75, 32, 0.12);
-            background: #fdf2e9;
+            box-shadow: 0 4px 16px rgba(245, 166, 35, 0.12);
+            background: #fdf8ed;
         }
         
         .city-btn.active {
-            background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
-            border-color: #d84b20;
-            color: white;
-            box-shadow: 0 4px 16px rgba(216, 75, 32, 0.3);
+            background: linear-gradient(135deg, #F5A623 0%, #FFD700 100%);
+            border-color: #F5A623;
+            color: #1a237e;
+            box-shadow: 0 4px 16px rgba(245, 166, 35, 0.3);
         }
         
-        .city-btn .province {
+        .city-btn .state {
             font-size: 0.55rem;
             opacity: 0.6;
             display: block;
@@ -266,12 +266,12 @@ def load_css():
             margin-top: 0.1rem;
         }
         
-        .city-btn.active .province {
+        .city-btn.active .state {
             opacity: 0.8;
-            color: rgba(255,255,255,0.8);
+            color: rgba(26, 35, 126, 0.8);
         }
         
-        /* Quick Cities Header */
+        /* Quick Header */
         .quick-header {
             display: flex;
             align-items: center;
@@ -288,15 +288,40 @@ def load_css():
             font-size: 1rem;
         }
         
-        .quick-header .leaf {
+        .quick-header .flag {
             font-size: 1.2rem;
             display: inline-block;
-            animation: leaf-spin 3s ease-in-out infinite;
         }
         
-        @keyframes leaf-spin {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
+        /* Stats Cards */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            border-left: 4px solid #F5A623;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(245, 166, 35, 0.08);
+        }
+        
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0d1b2a;
+        }
+        
+        .stat-card .label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* Dark Mode */
@@ -325,11 +350,11 @@ def load_css():
             }
             .city-btn:hover {
                 background: rgba(42, 58, 74, 0.95);
-                border-color: #d84b20;
+                border-color: #F5A623;
             }
             .city-btn.active {
-                background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
-                color: white;
+                background: linear-gradient(135deg, #F5A623 0%, #FFD700 100%);
+                color: #1a237e;
             }
             .quick-header {
                 border-bottom-color: rgba(255, 255, 255, 0.05);
@@ -337,18 +362,24 @@ def load_css():
             .quick-header h4 {
                 color: #e0e0e0;
             }
+            .stat-card {
+                background: rgba(30, 42, 58, 0.95);
+            }
+            .stat-card .value {
+                color: #FFD700;
+            }
             .css-1d391kg {
                 background: #0d1b2a;
                 border-right-color: rgba(255, 255, 255, 0.05);
             }
             .weather-card .value {
-                background: linear-gradient(135deg, #64B5F6, #4DD0E1);
+                background: linear-gradient(135deg, #FFD700, #F5A623);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
             .weather-card .value-large {
-                background: linear-gradient(135deg, #64B5F6, #4DD0E1);
+                background: linear-gradient(135deg, #FFD700, #F5A623);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
@@ -369,6 +400,9 @@ def load_css():
             .weather-card .value {
                 font-size: 2rem;
             }
+            .city-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         /* Animations */
@@ -385,35 +419,45 @@ def load_css():
             animation: fadeInUp 0.6s ease forwards;
         }
         
-        /* Stats Cards */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-            text-align: center;
-            border-left: 4px solid #2196F3;
-            transition: all 0.3s ease;
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
         
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(33, 150, 243, 0.08);
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
         }
         
-        .stat-card .value {
-            font-size: 1.8rem;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #F5A623, #FFD700);
+            border-radius: 4px;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            ::-webkit-scrollbar-track {
+                background: #1a2a3a;
+            }
+        }
+        
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #F5A623, transparent);
+            margin: 2rem 0;
+            opacity: 0.3;
+        }
+        
+        /* Myanmar Flag Colors */
+        .myanmar-flag-badge {
+            display: inline-block;
+            background: linear-gradient(to bottom, #F5A623 33%, #FFD700 33%, #FFD700 66%, #4CAF50 66%);
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            color: white;
             font-weight: 700;
-            color: #0d1b2a;
-        }
-        
-        .stat-card .label {
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         
         /* Alert Boxes */
@@ -433,37 +477,6 @@ def load_css():
             background: #e8f5e9;
             border-left-color: #4CAF50;
         }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
-            border-radius: 4px;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            ::-webkit-scrollbar-track {
-                background: #1a2a3a;
-            }
-        }
-        
-        /* Divider */
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #2196F3, transparent);
-            margin: 2rem 0;
-            opacity: 0.3;
-        }
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
@@ -474,11 +487,11 @@ load_css()
 # Initialize Session State
 # -----------------------------
 if 'city' not in st.session_state:
-    st.session_state.city = "Toronto"
+    st.session_state.city = "Yangon"
 if 'lat' not in st.session_state:
-    st.session_state.lat = 43.6532
+    st.session_state.lat = 16.8661
 if 'lon' not in st.session_state:
-    st.session_state.lon = -79.3832
+    st.session_state.lon = 96.1951
 if 'favorites' not in st.session_state:
     st.session_state.favorites = []
 if 'auto_refresh' not in st.session_state:
@@ -491,32 +504,30 @@ if 'weather_history' not in st.session_state:
     st.session_state.weather_history = []
 
 # -----------------------------
-# City Database
+# Myanmar Cities Database
 # -----------------------------
-CANADA_CITIES = {
-    "Toronto": {"lat": 43.6532, "lon": -79.3832, "province": "ON", "population": "2.9M"},
-    "Vancouver": {"lat": 49.2827, "lon": -123.1207, "province": "BC", "population": "0.7M"},
-    "Montreal": {"lat": 45.5017, "lon": -73.5673, "province": "QC", "population": "1.8M"},
-    "Calgary": {"lat": 51.0447, "lon": -114.0719, "province": "AB", "population": "1.3M"},
-    "Edmonton": {"lat": 53.5461, "lon": -113.4938, "province": "AB", "population": "1.0M"},
-    "Ottawa": {"lat": 45.4215, "lon": -75.6972, "province": "ON", "population": "1.0M"},
-    "Halifax": {"lat": 44.6488, "lon": -63.5752, "province": "NS", "population": "0.4M"},
-    "Winnipeg": {"lat": 49.8951, "lon": -97.1384, "province": "MB", "population": "0.8M"},
-    "Quebec City": {"lat": 46.8033, "lon": -71.3687, "province": "QC", "population": "0.5M"},
-    "Victoria": {"lat": 48.4284, "lon": -123.3656, "province": "BC", "population": "0.1M"},
-    "St. John's": {"lat": 47.5615, "lon": -52.7126, "province": "NL", "population": "0.1M"},
-    "Yellowknife": {"lat": 62.4540, "lon": -114.3718, "province": "NT", "population": "0.02M"},
-    "Iqaluit": {"lat": 63.7467, "lon": -68.5170, "province": "NU", "population": "0.007M"},
-    "Whitehorse": {"lat": 60.7212, "lon": -135.0568, "province": "YT", "population": "0.03M"},
-    "Kelowna": {"lat": 49.8879, "lon": -119.4962, "province": "BC", "population": "0.2M"},
-    "Kingston": {"lat": 44.2312, "lon": -76.4810, "province": "ON", "population": "0.1M"},
-    "Niagara Falls": {"lat": 43.0896, "lon": -79.0849, "province": "ON", "population": "0.09M"},
-    "Thunder Bay": {"lat": 48.3809, "lon": -89.2477, "province": "ON", "population": "0.1M"},
-    "Sherbrooke": {"lat": 45.4049, "lon": -71.8928, "province": "QC", "population": "0.2M"},
-    "Moncton": {"lat": 46.0878, "lon": -64.7782, "province": "NB", "population": "0.08M"},
-    "Charlottetown": {"lat": 46.2382, "lon": -63.1311, "province": "PE", "population": "0.04M"},
-    "Regina": {"lat": 50.4452, "lon": -104.6189, "province": "SK", "population": "0.2M"},
-    "Saskatoon": {"lat": 52.1579, "lon": -106.6702, "province": "SK", "population": "0.3M"},
+MYANMAR_CITIES = {
+    "Yangon": {"lat": 16.8661, "lon": 96.1951, "state": "Yangon", "population": "5.2M"},
+    "Mandalay": {"lat": 21.9588, "lon": 96.0891, "state": "Mandalay", "population": "1.2M"},
+    "Naypyidaw": {"lat": 19.7633, "lon": 96.0785, "state": "Naypyidaw", "population": "0.9M"},
+    "Bago": {"lat": 17.3217, "lon": 96.4664, "state": "Bago", "population": "0.5M"},
+    "Mawlamyine": {"lat": 16.4908, "lon": 97.6250, "state": "Mon", "population": "0.3M"},
+    "Sittwe": {"lat": 20.1462, "lon": 92.8987, "state": "Rakhine", "population": "0.1M"},
+    "Pathein": {"lat": 16.7691, "lon": 94.7392, "state": "Ayeyarwady", "population": "0.3M"},
+    "Taunggyi": {"lat": 20.7892, "lon": 97.0358, "state": "Shan", "population": "0.2M"},
+    "Myitkyina": {"lat": 25.3837, "lon": 97.3963, "state": "Kachin", "population": "0.1M"},
+    "Hpa-an": {"lat": 16.8929, "lon": 97.6336, "state": "Kayin", "population": "0.05M"},
+    "Loikaw": {"lat": 19.6741, "lon": 97.2081, "state": "Kayah", "population": "0.02M"},
+    "Hakha": {"lat": 22.6430, "lon": 93.6078, "state": "Chin", "population": "0.02M"},
+    "Monywa": {"lat": 22.1071, "lon": 95.1362, "state": "Sagaing", "population": "0.2M"},
+    "Meiktila": {"lat": 20.8768, "lon": 95.8570, "state": "Mandalay", "population": "0.2M"},
+    "Pyay": {"lat": 18.8219, "lon": 95.2146, "state": "Bago", "population": "0.2M"},
+    "Mingaladon": {"lat": 16.9078, "lon": 96.0928, "state": "Yangon", "population": "0.2M"},
+    "Dagon": {"lat": 16.8157, "lon": 96.1692, "state": "Yangon", "population": "0.1M"},
+    "Thanlyin": {"lat": 16.7575, "lon": 96.2500, "state": "Yangon", "population": "0.1M"},
+    "Thaketa": {"lat": 16.8333, "lon": 96.1667, "state": "Yangon", "population": "0.1M"},
+    "Insein": {"lat": 16.8833, "lon": 96.1000, "state": "Yangon", "population": "0.1M"},
+    "Bahan": {"lat": 16.8167, "lon": 96.1667, "state": "Yangon", "population": "0.05M"},
 }
 
 # -----------------------------
@@ -527,30 +538,27 @@ def search_city(query):
         return None
     query_lower = query.lower().strip()
     
-    # Exact match
-    for city_name in CANADA_CITIES:
+    for city_name in MYANMAR_CITIES:
         if city_name.lower() == query_lower:
             return city_name
     
-    # Contains match
     matches = []
-    for city_name in CANADA_CITIES:
+    for city_name in MYANMAR_CITIES:
         if query_lower in city_name.lower():
             matches.append(city_name)
     if matches:
         return matches[0]
     
-    # Starts with match
-    for city_name in CANADA_CITIES:
+    for city_name in MYANMAR_CITIES:
         if city_name.lower().startswith(query_lower):
             return city_name
     
     return None
 
 def get_city_coordinates(city_name):
-    city_data = CANADA_CITIES.get(city_name)
+    city_data = MYANMAR_CITIES.get(city_name)
     if city_data:
-        return city_data["lat"], city_data["lon"], city_data["province"]
+        return city_data["lat"], city_data["lon"], city_data["state"]
     return None, None, None
 
 # -----------------------------
@@ -584,7 +592,7 @@ def get_weather_openmeteo(lat, lon):
                 'weather_code', 'cloud_cover', 'wind_speed_10m',
                 'uv_index'
             ],
-            'timezone': 'America/Toronto',
+            'timezone': 'Asia/Yangon',
             'forecast_days': 7
         }
         response = requests.get(url, params=params, timeout=15)
@@ -634,32 +642,32 @@ def create_location_map(selected_city, lat, lon):
         lat=[lat],
         lon=[lon],
         mode='markers',
-        marker=dict(size=22, color='#d84b20', symbol='circle'),
+        marker=dict(size=22, color='#F5A623', symbol='circle'),
         text=[f"📍 {selected_city}"],
         hoverinfo='text',
         name=selected_city
     ))
     
-    all_lats = [data['lat'] for data in CANADA_CITIES.values()]
-    all_lons = [data['lon'] for data in CANADA_CITIES.values()]
-    all_names = list(CANADA_CITIES.keys())
+    all_lats = [data['lat'] for data in MYANMAR_CITIES.values()]
+    all_lons = [data['lon'] for data in MYANMAR_CITIES.values()]
+    all_names = list(MYANMAR_CITIES.keys())
     
     fig.add_trace(go.Scattermapbox(
         lat=all_lats,
         lon=all_lons,
         mode='markers',
-        marker=dict(size=8, color='rgba(33, 150, 243, 0.5)', symbol='circle'),
+        marker=dict(size=8, color='rgba(245, 166, 35, 0.5)', symbol='circle'),
         text=all_names,
         hoverinfo='text',
-        name='Canadian Cities',
+        name='Myanmar Cities',
         showlegend=False
     ))
     
     fig.update_layout(
         mapbox=dict(
             style="open-street-map",
-            center=dict(lat=55, lon=-100),
-            zoom=3
+            center=dict(lat=20, lon=96),
+            zoom=5
         ),
         height=400,
         margin={"r":0, "t":0, "l":0, "b":0},
@@ -679,7 +687,7 @@ def create_weather_map(daily_data, lat, lon):
         lat=[lat],
         lon=[lon],
         mode='markers',
-        marker=dict(size=25, color='#d84b20', symbol='circle'),
+        marker=dict(size=25, color='#F5A623', symbol='circle'),
         text=["📍 Current Location"],
         hoverinfo='text'
     ))
@@ -703,7 +711,7 @@ def create_weather_map(daily_data, lat, lon):
         mapbox=dict(
             style="open-street-map",
             center=dict(lat=lat, lon=lon),
-            zoom=5
+            zoom=6
         ),
         height=400,
         margin={"r":0, "t":0, "l":0, "b":0},
@@ -898,8 +906,8 @@ def create_weather_radar_chart(daily_data):
         theta=categories,
         fill='toself',
         name='Weekly Averages',
-        line=dict(color='#2196F3', width=2),
-        fillcolor='rgba(33, 150, 243, 0.3)'
+        line=dict(color='#F5A623', width=2),
+        fillcolor='rgba(245, 166, 35, 0.3)'
     ))
     
     fig.update_layout(
@@ -921,10 +929,10 @@ def create_weather_radar_chart(daily_data):
 # -----------------------------
 st.markdown("""
     <div class="main-header">
-        <h1>🍁 Premium Weather Dashboard</h1>
-        <p>Real-time weather, 7-day forecast, interactive maps, and 12+ charts</p>
+        <h1>🇲🇲 Myanmar Weather Dashboard</h1>
+        <p>Real-time weather and 7-day forecast for cities across Myanmar</p>
         <div class="badge-group">
-            <span class="badge badge-canada">🇨🇦 Canada</span>
+            <span class="badge badge-myanmar">🇲🇲 Myanmar</span>
             <span class="badge badge-live">● LIVE</span>
             <span class="badge badge-api">📡 Open-Meteo</span>
             <span class="badge badge-premium">💎 Premium</span>
@@ -938,8 +946,8 @@ st.markdown("""
 with st.sidebar:
     st.markdown("""
         <div style="text-align: center; padding: 0.5rem 0 1rem 0;">
-            <h2 style="font-size: 1.5rem; margin: 0;">🍁 Weather Pro</h2>
-            <p style="font-size: 0.8rem; color: #888;">Premium Weather Dashboard</p>
+            <h2 style="font-size: 1.5rem; margin: 0;">🇲🇲 Weather Pro</h2>
+            <p style="font-size: 0.8rem; color: #888;">Myanmar Weather Dashboard</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -951,7 +959,7 @@ with st.sidebar:
     city_input = st.text_input(
         "🔍 Search City",
         value="",
-        placeholder="e.g., Toronto, Van, Halifax"
+        placeholder="e.g., Yangon, Mandalay, Bago"
     )
     
     col_search1, col_search2 = st.columns([3, 1])
@@ -960,12 +968,12 @@ with st.sidebar:
             if city_input:
                 matched_city = search_city(city_input)
                 if matched_city:
-                    lat, lon, province = get_city_coordinates(matched_city)
+                    lat, lon, state = get_city_coordinates(matched_city)
                     if lat:
                         st.session_state.city = matched_city
                         st.session_state.lat = lat
                         st.session_state.lon = lon
-                        st.success(f"✅ Found: {matched_city}, {province}")
+                        st.success(f"✅ Found: {matched_city}, {state}")
                         st.rerun()
                 else:
                     st.error(f"❌ City not found")
@@ -990,7 +998,7 @@ with st.sidebar:
         st.markdown('<div class="city-grid">', unsafe_allow_html=True)
         for fav_city in st.session_state.favorites:
             if st.button(f"⭐ {fav_city}", key=f"fav_{fav_city}", use_container_width=True):
-                city_data = CANADA_CITIES.get(fav_city)
+                city_data = MYANMAR_CITIES.get(fav_city)
                 if city_data:
                     st.session_state.city = fav_city
                     st.session_state.lat = city_data["lat"]
@@ -1007,13 +1015,12 @@ with st.sidebar:
     # Popular Cities
     st.markdown("""
         <div class="quick-header">
-            <span class="leaf">🍁</span>
+            <span class="flag">🇲🇲</span>
             <h4>Popular Cities</h4>
         </div>
     """, unsafe_allow_html=True)
     
-    popular_cities = ["Toronto", "Vancouver", "Montreal", "Calgary", "Edmonton", 
-                      "Ottawa", "Halifax", "Winnipeg"]
+    popular_cities = ["Yangon", "Mandalay", "Naypyidaw", "Bago", "Mawlamyine", "Sittwe"]
     
     st.markdown('<div class="city-grid">', unsafe_allow_html=True)
     
@@ -1022,11 +1029,11 @@ with st.sidebar:
         
         if st.button(
             f"{'📍 ' if is_active else ''}{city_name}",
-            key=f"ca_{city_name}",
+            key=f"my_{city_name}",
             use_container_width=True,
             type="primary" if is_active else "secondary"
         ):
-            city_data = CANADA_CITIES.get(city_name)
+            city_data = MYANMAR_CITIES.get(city_name)
             if city_data:
                 st.session_state.city = city_name
                 st.session_state.lat = city_data["lat"]
@@ -1034,17 +1041,17 @@ with st.sidebar:
                 st.rerun()
         
         if is_active:
-            st.caption(f"📍 {CANADA_CITIES.get(city_name, {}).get('province', '')} • Active")
+            st.caption(f"📍 {MYANMAR_CITIES.get(city_name, {}).get('state', '')} • Active")
         else:
-            st.caption(f"📍 {CANADA_CITIES.get(city_name, {}).get('province', '')}")
+            st.caption(f"📍 {MYANMAR_CITIES.get(city_name, {}).get('state', '')}")
     
     st.markdown('</div>', unsafe_allow_html=True)
     
     with st.expander("🗺️ All Cities"):
-        all_cities = sorted(CANADA_CITIES.keys())
+        all_cities = sorted(MYANMAR_CITIES.keys())
         for city_name in all_cities:
-            city_data = CANADA_CITIES[city_name]
-            st.write(f"📍 {city_name} ({city_data['province']})")
+            city_data = MYANMAR_CITIES[city_name]
+            st.write(f"📍 {city_name} ({city_data['state']})")
     
     st.divider()
     
@@ -1064,7 +1071,7 @@ with st.sidebar:
     st.divider()
     st.caption("🌤️ Powered by Open-Meteo")
     st.caption(f"📅 {datetime.now().strftime('%B %d, %Y')}")
-    st.caption(f"🏙️ {len(CANADA_CITIES)} Cities")
+    st.caption(f"🏙️ {len(MYANMAR_CITIES)} Cities")
 
 # -----------------------------
 # Main Content
@@ -1079,7 +1086,7 @@ if st.session_state.auto_refresh:
     st.rerun()
 
 if city and lat and lon:
-    with st.spinner(f"Loading premium weather for {city}..."):
+    with st.spinner(f"Loading weather for {city}..."):
         data = get_weather_openmeteo(lat, lon)
         
         if data:
@@ -1088,8 +1095,8 @@ if city and lat and lon:
             hourly = data.get('hourly', {})
             
             if current and daily:
-                province = CANADA_CITIES.get(city, {}).get('province', '')
-                population = CANADA_CITIES.get(city, {}).get('population', 'N/A')
+                state = MYANMAR_CITIES.get(city, {}).get('state', '')
+                population = MYANMAR_CITIES.get(city, {}).get('population', 'N/A')
                 
                 # ---------- SECTION 1: MAPS ----------
                 st.markdown("### 🗺️ Weather Maps")
@@ -1293,7 +1300,7 @@ if city and lat and lon:
         else:
             st.error(f"❌ Could not fetch weather data for {city}")
 else:
-    st.info("👈 Select a Canadian city to get started")
+    st.info("👈 Select a Myanmar city to get started")
 
 # -----------------------------
 # Footer
@@ -1301,7 +1308,7 @@ else:
 st.divider()
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.caption("🍁 Premium Weather Dashboard")
+    st.caption("🇲🇲 Myanmar Weather Dashboard")
 with col2:
     st.caption("🌤️ Powered by Open-Meteo")
 with col3:
