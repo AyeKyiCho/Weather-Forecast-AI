@@ -1,17 +1,18 @@
 {
-  "app": {
-    "title": "Weather Dashboard",
-    "icon": "🌤️",
-    "description": "Real-time weather and 5-day forecast for any city",
-    "version": "1.0"
-  },
-  "api": {
-    "openweather_key": "00644dab7dd1097263bb6d84cb9dd1fd",
-    "weatherapi_key": ""
-  },
-  "units": {
-    "temperature": "metric",
-    "speed": "km/h"
-  },
-  "default_city": "Toronto"
+    "app_name": "Premium Weather Dashboard",
+    "version": "2.0",
+    "api_url": "https://api.open-meteo.com/v1/forecast",
+    "default_city": "Toronto",
+    "forecast_days": 7,
+    "timezone": "America/Toronto",
+    "refresh_interval": 30,
+    "theme": "light",
+    "view_modes": ["Detailed", "Compact", "Minimal"],
+    "popular_cities": ["Toronto", "Vancouver", "Montreal", "Calgary", "Edmonton", "Ottawa", "Halifax", "Winnipeg"],
+    "uv_levels": {
+        "low": 2,
+        "moderate": 5,
+        "high": 7,
+        "very_high": 10
+    }
 }
