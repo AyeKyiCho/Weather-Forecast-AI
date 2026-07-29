@@ -23,450 +23,156 @@ st.set_page_config(
 )
 
 # -----------------------------
-# Premium CSS
+# Load CSS
 # -----------------------------
 def load_css():
-    css = """
-    <style>
-        /* Import Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .main-header {
-            background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 30%, #2196F3 70%, #00BCD4 100%);
-            padding: 2.5rem 3rem;
-            border-radius: 24px;
-            color: white;
-            margin-bottom: 2rem;
-            box-shadow: 0 12px 48px rgba(33, 150, 243, 0.25);
-            position: relative;
-            overflow: hidden;
-            border-bottom: 4px solid #d84b20;
-        }
-        
-        .main-header::before {
-            content: '🍁';
-            position: absolute;
-            right: 3rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 8rem;
-            opacity: 0.08;
-        }
-        
-        .main-header::after {
-            content: '🌤️';
-            position: absolute;
-            right: 9rem;
-            top: 15%;
-            font-size: 4rem;
-            opacity: 0.06;
-        }
-        
-        .main-header h1 {
-            font-weight: 800;
-            margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #ffffff, #90caf9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .main-header p {
-            margin: 0.5rem 0 0 0;
-            opacity: 0.9;
-            font-size: 1.1rem;
-            color: #e3f2fd;
-        }
-        
-        .badge-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            color: white;
-        }
-        
-        .badge-canada {
-            background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
-        }
-        
-        .badge-live {
-            background: #4CAF50;
-            animation: pulse-dot 1.5s ease-in-out infinite;
-        }
-        
-        .badge-api {
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
-        }
-        
-        .badge-premium {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
-        }
-        
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Weather Cards */
-        .weather-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-            min-height: 160px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .weather-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 16px 48px rgba(33, 150, 243, 0.15);
-            border-color: rgba(33, 150, 243, 0.2);
-        }
-        
-        .weather-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .weather-card .value {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #0d1b2a, #2196F3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .weather-card .value-large {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #0d1b2a, #2196F3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .weather-card .label {
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-        }
-        
-        /* Forecast Cards */
-        .forecast-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 0.8rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-        
-        .forecast-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 40px rgba(33, 150, 243, 0.12);
-            border-color: rgba(33, 150, 243, 0.2);
-        }
-        
-        .forecast-card .day {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #0d1b2a;
-        }
-        
-        .forecast-card .date {
-            font-size: 0.7rem;
-            color: #999;
-        }
-        
-        .forecast-card .temp-high {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2196F3;
-        }
-        
-        .forecast-card .temp-low {
-            font-size: 0.9rem;
-            color: #999;
-        }
-        
-        /* City Grid */
-        .city-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        
-        .city-btn {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 0.7rem 0.4rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #333;
-        }
-        
-        .city-btn:hover {
-            border-color: #d84b20;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(216, 75, 32, 0.12);
-            background: #fdf2e9;
-        }
-        
-        .city-btn.active {
-            background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
-            border-color: #d84b20;
-            color: white;
-            box-shadow: 0 4px 16px rgba(216, 75, 32, 0.3);
-        }
-        
-        .city-btn .province {
-            font-size: 0.55rem;
-            opacity: 0.6;
-            display: block;
-            font-weight: 400;
-            margin-top: 0.1rem;
-        }
-        
-        .city-btn.active .province {
-            opacity: 0.8;
-            color: rgba(255,255,255,0.8);
-        }
-        
-        /* Quick Cities Header */
-        .quick-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .quick-header h4 {
-            margin: 0;
-            font-weight: 700;
-            color: #0d1b2a;
-            font-size: 1rem;
-        }
-        
-        .quick-header .leaf {
-            font-size: 1.2rem;
-            display: inline-block;
-            animation: leaf-spin 3s ease-in-out infinite;
-        }
-        
-        @keyframes leaf-spin {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
-        }
-        
-        /* Dark Mode */
-        @media (prefers-color-scheme: dark) {
-            .weather-card {
-                background: rgba(30, 42, 58, 0.95);
-                border-color: rgba(255, 255, 255, 0.05);
+    try:
+        with open('styles.css', 'r', encoding='utf-8') as f:
+            css = f.read()
+        st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        # Fallback: use inline CSS if file not found
+        st.markdown("""
+        <style>
+            .main-header {
+                background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 30%, #2196F3 70%, #00BCD4 100%);
+                padding: 2rem 2.5rem;
+                border-radius: 24px;
+                color: white;
+                margin-bottom: 2rem;
             }
-            .weather-card .label {
-                color: #888;
+            .badge-group {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 0.5rem;
             }
-            .forecast-card {
-                background: rgba(30, 42, 58, 0.95);
-                border-color: rgba(255, 255, 255, 0.05);
-            }
-            .forecast-card:hover {
-                background: rgba(42, 58, 74, 0.95);
-            }
-            .forecast-card .day {
-                color: #e0e0e0;
-            }
-            .city-btn {
-                background: rgba(30, 42, 58, 0.95);
-                border-color: rgba(255, 255, 255, 0.05);
-                color: #e0e0e0;
-            }
-            .city-btn:hover {
-                background: rgba(42, 58, 74, 0.95);
-                border-color: #d84b20;
-            }
-            .city-btn.active {
-                background: linear-gradient(135deg, #d84b20 0%, #e67e22 100%);
+            .badge {
+                display: inline-block;
+                padding: 0.25rem 1rem;
+                border-radius: 30px;
+                font-weight: 700;
+                font-size: 0.7rem;
                 color: white;
             }
-            .quick-header {
-                border-bottom-color: rgba(255, 255, 255, 0.05);
+            .badge-canada { background: #d84b20; }
+            .badge-live { background: #4CAF50; }
+            .badge-api { background: #2196F3; }
+            .badge-premium { background: #9b59b6; }
+            .weather-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                margin-bottom: 1rem;
             }
-            .quick-header h4 {
-                color: #e0e0e0;
-            }
-            .css-1d391kg {
-                background: #0d1b2a;
-                border-right-color: rgba(255, 255, 255, 0.05);
-            }
-            .weather-card .value {
-                background: linear-gradient(135deg, #64B5F6, #4DD0E1);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            .weather-card .value-large {
-                background: linear-gradient(135deg, #64B5F6, #4DD0E1);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-header {
-                padding: 1.5rem;
-            }
-            .main-header h1 {
-                font-size: 1.8rem;
+            .weather-card {
+                background: rgba(255,255,255,0.95);
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+                min-height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
             .weather-card .value-large {
-                font-size: 3rem;
+                font-size: 3.5rem;
+                font-weight: 800;
             }
             .weather-card .value {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                font-weight: 800;
             }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .weather-card {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .forecast-card {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        /* Stats Cards */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-            text-align: center;
-            border-left: 4px solid #2196F3;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(33, 150, 243, 0.08);
-        }
-        
-        .stat-card .value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #0d1b2a;
-        }
-        
-        .stat-card .label {
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Alert Boxes */
-        .alert-box {
-            padding: 1rem;
-            border-radius: 12px;
-            margin: 0.5rem 0;
-            border-left: 4px solid;
-        }
-        
-        .alert-rain {
-            background: #e3f2fd;
-            border-left-color: #2196F3;
-        }
-        
-        .alert-snow {
-            background: #e8f5e9;
-            border-left-color: #4CAF50;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
-            border-radius: 4px;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            ::-webkit-scrollbar-track {
-                background: #1a2a3a;
+            .weather-card .label {
+                font-size: 0.7rem;
+                color: #888;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
             }
-        }
-        
-        /* Divider */
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #2196F3, transparent);
-            margin: 2rem 0;
-            opacity: 0.3;
-        }
-    </style>
-    """
-    st.markdown(css, unsafe_allow_html=True)
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 0.8rem;
+                margin: 0.5rem 0 1rem 0;
+            }
+            .stat-card {
+                background: rgba(255,255,255,0.9);
+                padding: 1rem 0.5rem;
+                border-radius: 14px;
+                text-align: center;
+                border-left: 4px solid #2196F3;
+            }
+            .stat-card .value {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #0d1b2a;
+            }
+            .stat-card .label {
+                font-size: 0.65rem;
+                color: #999;
+                text-transform: uppercase;
+            }
+            .forecast-grid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 0.8rem;
+                margin: 1rem 0;
+            }
+            .forecast-card {
+                background: rgba(255,255,255,0.9);
+                padding: 1rem 0.5rem;
+                border-radius: 16px;
+                text-align: center;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            }
+            .forecast-card .day {
+                font-weight: 700;
+                font-size: 1rem;
+            }
+            .forecast-card .temp-high {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #2196F3;
+            }
+            .city-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                margin: 0.5rem 0;
+            }
+            .sun-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                padding: 1rem;
+                background: rgba(255,255,255,0.9);
+                border-radius: 16px;
+                text-align: center;
+            }
+            .sun-info .value {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #0d1b2a;
+            }
+            @media (max-width: 1200px) {
+                .weather-grid { grid-template-columns: repeat(2, 1fr); }
+                .stats-grid { grid-template-columns: repeat(3, 1fr); }
+                .forecast-grid { grid-template-columns: repeat(4, 1fr); }
+            }
+            @media (max-width: 768px) {
+                .weather-grid { grid-template-columns: repeat(2, 1fr); }
+                .stats-grid { grid-template-columns: repeat(3, 1fr); }
+                .forecast-grid { grid-template-columns: repeat(3, 1fr); }
+            }
+            @keyframes pulse-dot {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            .badge-live { animation: pulse-dot 1.5s ease-in-out infinite; }
+        </style>
+        """, unsafe_allow_html=True)
 
 load_css()
 
@@ -552,6 +258,13 @@ def get_city_coordinates(city_name):
     if city_data:
         return city_data["lat"], city_data["lon"], city_data["province"]
     return None, None, None
+
+def format_time(time_str):
+    try:
+        dt = datetime.fromisoformat(time_str.replace('Z', '+00:00'))
+        return dt.strftime('%I:%M %p')
+    except:
+        return time_str
 
 # -----------------------------
 # Weather API
@@ -661,7 +374,7 @@ def create_location_map(selected_city, lat, lon):
             center=dict(lat=55, lon=-100),
             zoom=3
         ),
-        height=400,
+        height=350,
         margin={"r":0, "t":0, "l":0, "b":0},
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)'
@@ -705,7 +418,7 @@ def create_weather_map(daily_data, lat, lon):
             center=dict(lat=lat, lon=lon),
             zoom=5
         ),
-        height=400,
+        height=350,
         margin={"r":0, "t":0, "l":0, "b":0},
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)'
@@ -720,11 +433,15 @@ def create_temperature_chart(daily_data):
     dates = daily_data.get('time', [])
     temp_max = daily_data.get('temperature_2m_max', [])
     temp_min = daily_data.get('temperature_2m_min', [])
+    apparent_max = daily_data.get('apparent_temperature_max', [])
+    apparent_min = daily_data.get('apparent_temperature_min', [])
     
     df = pd.DataFrame({
         'Date': dates,
         'Max Temp': temp_max,
         'Min Temp': temp_min,
+        'Feels Like Max': apparent_max,
+        'Feels Like Min': apparent_min,
     })
     
     fig = go.Figure()
@@ -744,6 +461,24 @@ def create_temperature_chart(daily_data):
         name='Min Temp',
         line=dict(color='#3498db', width=3),
         marker=dict(size=8),
+        mode='lines+markers'
+    ))
+    
+    fig.add_trace(go.Scatter(
+        x=df['Date'],
+        y=df['Feels Like Max'],
+        name='Feels Like Max',
+        line=dict(color='#e67e22', width=2, dash='dash'),
+        marker=dict(size=6),
+        mode='lines+markers'
+    ))
+    
+    fig.add_trace(go.Scatter(
+        x=df['Date'],
+        y=df['Feels Like Min'],
+        name='Feels Like Min',
+        line=dict(color='#1abc9c', width=2, dash='dash'),
+        marker=dict(size=6),
         mode='lines+markers'
     ))
     
@@ -778,30 +513,44 @@ def create_temperature_chart(daily_data):
 def create_precipitation_chart(daily_data):
     dates = daily_data.get('time', [])
     precipitation = daily_data.get('precipitation_sum', [])
+    rain = daily_data.get('rain_sum', [])
+    snow = daily_data.get('snowfall_sum', [])
     
     df = pd.DataFrame({
         'Date': dates,
-        'Precipitation': precipitation,
+        'Total': precipitation,
+        'Rain': rain,
+        'Snow': snow,
     })
     
     fig = go.Figure()
     
     fig.add_trace(go.Bar(
         x=df['Date'],
-        y=df['Precipitation'],
-        name='Precipitation',
+        y=df['Rain'],
+        name='Rain',
         marker_color='#3498db',
-        text=df['Precipitation'].round(1),
+        text=df['Rain'].round(1),
+        textposition='outside'
+    ))
+    
+    fig.add_trace(go.Bar(
+        x=df['Date'],
+        y=df['Snow'],
+        name='Snow',
+        marker_color='#bdc3c7',
+        text=df['Snow'].round(1),
         textposition='outside'
     ))
     
     fig.update_layout(
-        title='🌧️ Precipitation Forecast',
+        title='🌧️ Precipitation Forecast (Rain vs Snow)',
         xaxis_title='Date',
         yaxis_title='Precipitation (mm)',
         height=350,
         hovermode='x unified',
-        template='plotly_white'
+        template='plotly_white',
+        barmode='stack'
     )
     
     return fig
@@ -809,10 +558,12 @@ def create_precipitation_chart(daily_data):
 def create_wind_chart(daily_data):
     dates = daily_data.get('time', [])
     wind_speed = daily_data.get('wind_speed_10m_max', [])
+    wind_gusts = daily_data.get('wind_gusts_10m_max', [])
     
     df = pd.DataFrame({
         'Date': dates,
         'Wind Speed': wind_speed,
+        'Gusts': wind_gusts,
     })
     
     fig = go.Figure()
@@ -826,8 +577,17 @@ def create_wind_chart(daily_data):
         textposition='outside'
     ))
     
+    fig.add_trace(go.Scatter(
+        x=df['Date'],
+        y=df['Gusts'],
+        name='Gusts',
+        line=dict(color='#e67e22', width=2, dash='dot'),
+        marker=dict(size=8),
+        mode='lines+markers'
+    ))
+    
     fig.update_layout(
-        title='💨 Wind Speed Forecast',
+        title='💨 Wind Speed & Gusts',
         xaxis_title='Date',
         yaxis_title='Speed (km/h)',
         height=350,
@@ -916,13 +676,46 @@ def create_weather_radar_chart(daily_data):
     
     return fig
 
+def create_cloud_cover_chart(hourly_data):
+    times = hourly_data.get('time', [])[:24]
+    cloud_cover = hourly_data.get('cloud_cover', [])[:24]
+    
+    df = pd.DataFrame({
+        'Hour': [datetime.fromisoformat(t).strftime('%H:00') for t in times],
+        'Cloud Cover': cloud_cover,
+    })
+    
+    fig = go.Figure()
+    
+    fig.add_trace(go.Scatter(
+        x=df['Hour'],
+        y=df['Cloud Cover'],
+        name='Cloud Cover',
+        line=dict(color='#95a5a6', width=2),
+        marker=dict(size=6),
+        mode='lines+markers',
+        fill='tozeroy',
+        fillcolor='rgba(149, 165, 166, 0.2)'
+    ))
+    
+    fig.update_layout(
+        title='☁️ Cloud Cover (Next 24 Hours)',
+        xaxis_title='Time',
+        yaxis_title='Cloud Cover (%)',
+        height=300,
+        hovermode='x unified',
+        template='plotly_white'
+    )
+    
+    return fig
+
 # -----------------------------
 # Main App
 # -----------------------------
 st.markdown("""
     <div class="main-header">
         <h1>🍁 Premium Weather Dashboard</h1>
-        <p>Real-time weather, 7-day forecast, interactive maps, and 12+ charts</p>
+        <p>Real-time weather, 7-day forecast, interactive maps, and comprehensive charts</p>
         <div class="badge-group">
             <span class="badge badge-canada">🇨🇦 Canada</span>
             <span class="badge badge-live">● LIVE</span>
@@ -1042,9 +835,11 @@ with st.sidebar:
     
     with st.expander("🗺️ All Cities"):
         all_cities = sorted(CANADA_CITIES.keys())
-        for city_name in all_cities:
+        cols = st.columns(2)
+        for i, city_name in enumerate(all_cities):
             city_data = CANADA_CITIES[city_name]
-            st.write(f"📍 {city_name} ({city_data['province']})")
+            with cols[i % 2]:
+                st.write(f"📍 {city_name} ({city_data['province']})")
     
     st.divider()
     
@@ -1091,22 +886,20 @@ if city and lat and lon:
                 province = CANADA_CITIES.get(city, {}).get('province', '')
                 population = CANADA_CITIES.get(city, {}).get('population', 'N/A')
                 
-                # ---------- SECTION 1: MAPS ----------
-                st.markdown("### 🗺️ Weather Maps")
+                # ---------- CITY INFO ----------
+                st.markdown(f"""
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div>
+                            <h2 style="margin: 0; font-size: 2rem;">📍 {city}, {province}</h2>
+                            <p style="margin: 0; color: #888; font-size: 0.9rem;">Population: {population} • Updated: {datetime.now().strftime('%H:%M')}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 3rem;">{get_weather_code_emoji(current.get('weather_code', 0))}</span>
+                        </div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                col_map1, col_map2 = st.columns(2)
-                
-                with col_map1:
-                    st.caption("📍 Location Map")
-                    fig_map = create_location_map(city, lat, lon)
-                    st.plotly_chart(fig_map, use_container_width=True, config={'displayModeBar': False})
-                
-                with col_map2:
-                    st.caption("🌤️ 7-Day Weather Map")
-                    fig_weather = create_weather_map(daily, lat, lon)
-                    st.plotly_chart(fig_weather, use_container_width=True, config={'displayModeBar': False})
-                
-                # ---------- SECTION 2: CURRENT WEATHER ----------
+                # ---------- SECTION 1: CURRENT WEATHER - FIXED LAYOUT ----------
                 st.markdown("### ☀️ Current Weather")
                 
                 temp = current.get('temperature_2m', 'N/A')
@@ -1120,93 +913,146 @@ if city and lat and lon:
                 uv_index = current.get('uv_index', 'N/A')
                 rain = current.get('rain', 'N/A')
                 snowfall = current.get('snowfall', 'N/A')
+                cloud_cover = current.get('cloud_cover', 'N/A')
+                is_day = current.get('is_day', 1)
                 
-                col1, col2, col3, col4 = st.columns(4)
+                # Main weather cards - 4 columns
+                st.markdown('<div class="weather-grid">', unsafe_allow_html=True)
                 
-                with col1:
-                    st.markdown(f"""
-                        <div class="weather-card">
-                            <div class="icon">🌡️</div>
-                            <div class="value-large">{temp}°C</div>
-                            <div class="label">Temperature</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                # Card 1: Temperature
+                st.markdown(f"""
+                    <div class="weather-card">
+                        <div class="icon">🌡️</div>
+                        <div class="value-large">{temp}°C</div>
+                        <div class="label">Temperature</div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                with col2:
-                    st.markdown(f"""
-                        <div class="weather-card">
-                            <div class="icon">🌡️</div>
-                            <div class="value">{feels_like}°C</div>
-                            <div class="label">Feels Like</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                # Card 2: Feels Like
+                st.markdown(f"""
+                    <div class="weather-card">
+                        <div class="icon">🌡️</div>
+                        <div class="value">{feels_like}°C</div>
+                        <div class="label">Feels Like</div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                with col3:
-                    st.markdown(f"""
-                        <div class="weather-card">
-                            <div class="icon">{get_weather_code_emoji(weather_code)}</div>
-                            <div class="value">{get_weather_condition(weather_code)}</div>
-                            <div class="label">Condition</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                # Card 3: Condition
+                st.markdown(f"""
+                    <div class="weather-card">
+                        <div class="icon">{get_weather_code_emoji(weather_code)}</div>
+                        <div class="value" style="font-size: 1.2rem; -webkit-text-fill-color: #0d1b2a; color: #0d1b2a;">{get_weather_condition(weather_code)}</div>
+                        <div class="label">Condition</div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                with col4:
-                    st.markdown(f"""
-                        <div class="weather-card">
-                            <div class="icon">💨</div>
-                            <div class="value">{wind_speed} km/h</div>
-                            <div class="label">Wind Speed</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                # Card 4: Wind
+                st.markdown(f"""
+                    <div class="weather-card">
+                        <div class="icon">💨</div>
+                        <div class="value">{wind_speed} km/h</div>
+                        <div class="label">Wind Speed</div>
+                    </div>
+                """, unsafe_allow_html=True)
                 
-                # Row 2: Extra metrics
-                col1, col2, col3, col4, col5 = st.columns(5)
+                st.markdown('</div>', unsafe_allow_html=True)
                 
-                with col1:
-                    st.markdown(f"""
-                        <div class="stat-card">
-                            <div class="value">💧 {humidity}%</div>
-                            <div class="label">Humidity</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                # Stats row - 6 columns
+                st.markdown('<div class="stats-grid">', unsafe_allow_html=True)
                 
-                with col2:
-                    st.markdown(f"""
-                        <div class="stat-card">
-                            <div class="value">📊 {pressure} hPa</div>
-                            <div class="label">Pressure</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                stats = [
+                    ("💧", f"{humidity}%", "Humidity"),
+                    ("📊", f"{pressure} hPa", "Pressure"),
+                    ("☀️", f"{uv_index}", "UV Index"),
+                    ("🌧️", f"{precipitation} mm", "Precip"),
+                    ("🧭", f"{wind_dir}°", "Wind Dir"),
+                    ("☁️", f"{cloud_cover}%", "Cloud Cover")
+                ]
                 
-                with col3:
+                for icon, value, label in stats:
                     st.markdown(f"""
                         <div class="stat-card">
-                            <div class="value">☀️ {uv_index}</div>
-                            <div class="label">UV Index</div>
+                            <div class="value">{icon} {value}</div>
+                            <div class="label">{label}</div>
                         </div>
                     """, unsafe_allow_html=True)
                 
-                with col4:
-                    st.markdown(f"""
-                        <div class="stat-card">
-                            <div class="value">🌧️ {precipitation} mm</div>
-                            <div class="label">Precipitation</div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                st.markdown('</div>', unsafe_allow_html=True)
                 
-                with col5:
-                    st.markdown(f"""
-                        <div class="stat-card">
-                            <div class="value">🧭 {wind_dir}°</div>
-                            <div class="label">Wind Dir</div>
-                        </div>
-                    """, unsafe_allow_html=True)
-                
-                # Rain/Snow Alerts
+                # Alerts
+                alerts = []
                 if rain and float(rain) > 0:
-                    st.info(f"🌧️ Rain Alert: {rain} mm expected")
+                    alerts.append(("🌧️ Rain Alert", f"{rain} mm expected", "alert-rain"))
                 if snowfall and float(snowfall) > 0:
-                    st.info(f"❄️ Snow Alert: {snowfall} mm expected")
+                    alerts.append(("❄️ Snow Alert", f"{snowfall} mm expected", "alert-snow"))
+                if wind_speed and float(wind_speed) > 50:
+                    alerts.append(("💨 High Wind Alert", f"{wind_speed} km/h", "alert-wind"))
+                if uv_index and float(uv_index) > 7:
+                    alerts.append(("☀️ High UV Alert", f"UV Index: {uv_index}", "alert-uv"))
+                
+                for title, msg, cls in alerts:
+                    st.markdown(f"""
+                        <div class="alert-box {cls}">
+                            <strong>{title}</strong> • {msg}
+                        </div>
+                    """, unsafe_allow_html=True)
+                
+                # ---------- SUNRISE/SUNSET ----------
+                st.markdown("### 🌅 Sun Info")
+                
+                sunrise = daily.get('sunrise', [None])[0] if daily.get('sunrise') else None
+                sunset = daily.get('sunset', [None])[0] if daily.get('sunset') else None
+                daylight = daily.get('daylight_duration', [None])[0] if daily.get('daylight_duration') else None
+                
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.markdown(f"""
+                        <div class="sun-info">
+                            <div>
+                                <div style="font-size: 2rem;">🌅</div>
+                                <div class="value">{format_time(sunrise) if sunrise else 'N/A'}</div>
+                                <div class="label">Sunrise</div>
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+                with col2:
+                    st.markdown(f"""
+                        <div class="sun-info">
+                            <div>
+                                <div style="font-size: 2rem;">🌇</div>
+                                <div class="value">{format_time(sunset) if sunset else 'N/A'}</div>
+                                <div class="label">Sunset</div>
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+                with col3:
+                    hours = daylight / 3600 if daylight else 0
+                    st.markdown(f"""
+                        <div class="sun-info">
+                            <div>
+                                <div style="font-size: 2rem;">☀️</div>
+                                <div class="value">{hours:.1f}h</div>
+                                <div class="label">Daylight</div>
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+                
+                st.markdown("---")
+                
+                # ---------- SECTION 2: MAPS ----------
+                st.markdown("### 🗺️ Weather Maps")
+                
+                col_map1, col_map2 = st.columns(2)
+                
+                with col_map1:
+                    st.caption("📍 Location Map")
+                    fig_map = create_location_map(city, lat, lon)
+                    st.plotly_chart(fig_map, use_container_width=True, config={'displayModeBar': False})
+                
+                with col_map2:
+                    st.caption("🌤️ 7-Day Weather Map")
+                    fig_weather = create_weather_map(daily, lat, lon)
+                    st.plotly_chart(fig_weather, use_container_width=True, config={'displayModeBar': False})
                 
                 st.markdown("---")
                 
@@ -1233,10 +1079,18 @@ if city and lat and lon:
                     fig_uv = create_uv_index_chart(daily)
                     st.plotly_chart(fig_uv, use_container_width=True)
                 
+                # Cloud cover chart
+                if hourly:
+                    st.markdown("### ☁️ Cloud Cover")
+                    fig_cloud = create_cloud_cover_chart(hourly)
+                    st.plotly_chart(fig_cloud, use_container_width=True)
+                
                 # Radar Chart
                 st.markdown("### 📊 Weekly Summary")
                 fig_radar = create_weather_radar_chart(daily)
                 st.plotly_chart(fig_radar, use_container_width=True)
+                
+                st.markdown("---")
                 
                 # ---------- SECTION 4: FORECAST ----------
                 st.markdown("### 📅 7-Day Forecast")
@@ -1248,23 +1102,25 @@ if city and lat and lon:
                 precipitation_sum = daily.get('precipitation_sum', [])
                 wind_speed_max = daily.get('wind_speed_10m_max', [])
                 uv_index_max = daily.get('uv_index_max', [])
+                sunrise_times = daily.get('sunrise', [])
+                sunset_times = daily.get('sunset', [])
                 
-                cols = st.columns(7)
-                for i, col in enumerate(cols):
-                    if i < len(dates):
-                        with col:
-                            date_obj = datetime.strptime(dates[i], '%Y-%m-%d')
-                            st.markdown(f"""
-                                <div class="forecast-card">
-                                    <div class="day">{date_obj.strftime('%a')}</div>
-                                    <div class="date">{date_obj.strftime('%b %d')}</div>
-                                    <div style="font-size:2.5rem; margin:0.3rem 0;">{get_weather_code_emoji(weather_codes[i])}</div>
-                                    <div class="temp-high">{temp_max[i]}°C</div>
-                                    <div class="temp-low">↓ {temp_min[i]}°C</div>
-                                    <div style="font-size:0.7rem; color:#888; margin-top:0.2rem;">💧 {precipitation_sum[i]}mm</div>
-                                    <div style="font-size:0.7rem; color:#888;">💨 {wind_speed_max[i]} km/h</div>
-                                </div>
-                            """, unsafe_allow_html=True)
+                st.markdown('<div class="forecast-grid">', unsafe_allow_html=True)
+                for i in range(min(7, len(dates))):
+                    date_obj = datetime.strptime(dates[i], '%Y-%m-%d')
+                    st.markdown(f"""
+                        <div class="forecast-card">
+                            <div class="day">{date_obj.strftime('%a')}</div>
+                            <div class="date">{date_obj.strftime('%b %d')}</div>
+                            <div style="font-size: 2.5rem; margin: 0.2rem 0;">{get_weather_code_emoji(weather_codes[i])}</div>
+                            <div class="temp-high">{temp_max[i]}°C</div>
+                            <div class="temp-low">↓ {temp_min[i]}°C</div>
+                            <div style="font-size: 0.65rem; color: #888; margin-top: 0.2rem;">💧 {precipitation_sum[i]}mm</div>
+                            <div style="font-size: 0.65rem; color: #888;">💨 {wind_speed_max[i]} km/h</div>
+                            <div style="font-size: 0.65rem; color: #888;">☀️ UV {uv_index_max[i]}</div>
+                        </div>
+                    """, unsafe_allow_html=True)
+                st.markdown('</div>', unsafe_allow_html=True)
                 
                 # ---------- SECTION 5: STATS ----------
                 st.markdown("### 📈 Weekly Statistics")
@@ -1274,8 +1130,9 @@ if city and lat and lon:
                 avg_wind = np.mean(wind_speed_max) if wind_speed_max else 0
                 max_uv = max(uv_index_max) if uv_index_max else 0
                 min_temp = min(temp_min) if temp_min else 0
+                avg_humidity = current.get('relative_humidity_2m', 'N/A')
                 
-                col1, col2, col3, col4, col5 = st.columns(5)
+                col1, col2, col3, col4, col5, col6 = st.columns(6)
                 
                 with col1:
                     st.metric("📈 Avg High", f"{avg_temp:.1f}°C")
@@ -1287,6 +1144,54 @@ if city and lat and lon:
                     st.metric("💨 Avg Wind", f"{avg_wind:.1f} km/h")
                 with col5:
                     st.metric("☀️ Max UV", f"{max_uv:.0f}")
+                with col6:
+                    st.metric("💧 Humidity", f"{avg_humidity}%")
+                
+                # ---------- SECTION 6: HOURLY FORECAST ----------
+                if hourly:
+                    st.markdown("### ⏰ Hourly Forecast (Next 12 Hours)")
+                    
+                    times = hourly.get('time', [])[:12]
+                    temps = hourly.get('temperature_2m', [])[:12]
+                    weather_codes_hourly = hourly.get('weather_code', [])[:12]
+                    precip_hourly = hourly.get('precipitation', [])[:12]
+                    
+                    cols = st.columns(12)
+                    for i, col in enumerate(cols):
+                        if i < len(times):
+                            with col:
+                                hour_str = datetime.fromisoformat(times[i]).strftime('%H:00')
+                                st.markdown(f"""
+                                    <div style="text-align: center; background: rgba(255,255,255,0.9); padding: 0.5rem; border-radius: 12px;">
+                                        <div style="font-size: 0.7rem; font-weight: 600;">{hour_str}</div>
+                                        <div style="font-size: 1.8rem;">{get_weather_code_emoji(weather_codes_hourly[i])}</div>
+                                        <div style="font-size: 1.1rem; font-weight: 700;">{temps[i]}°C</div>
+                                        <div style="font-size: 0.6rem; color: #888;">💧 {precip_hourly[i]}mm</div>
+                                    </div>
+                                """, unsafe_allow_html=True)
+                
+                # ---------- ADDITIONAL INFO ----------
+                st.markdown("---")
+                st.markdown("### 📋 Weather Details")
+                
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.info(f"""
+                        **📍 Location Details**
+                        - City: {city}, {province}
+                        - Population: {population}
+                        - Coordinates: {lat}, {lon}
+                        - Timezone: America/Toronto
+                    """)
+                with col2:
+                    st.info(f"""
+                        **🌤️ Current Conditions**
+                        - Condition: {get_weather_condition(weather_code)}
+                        - Day/Night: {"☀️ Day" if is_day else "🌙 Night"}
+                        - Cloud Cover: {cloud_cover}%
+                        - Humidity: {humidity}%
+                        - Pressure: {pressure} hPa
+                    """)
                 
             else:
                 st.warning(f"⚠️ Could not parse weather data for {city}")
@@ -1299,7 +1204,7 @@ else:
 # Footer
 # -----------------------------
 st.divider()
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     st.caption("🍁 Premium Weather Dashboard")
 with col2:
@@ -1307,4 +1212,6 @@ with col2:
 with col3:
     st.caption(f"📅 {datetime.now().strftime('%B %d, %Y')}")
 with col4:
-    st.caption("📊 12+ Charts & Maps")
+    st.caption("📊 15+ Charts & Maps")
+with col5:
+    st.caption("🏙️ 23 Canadian Cities")
